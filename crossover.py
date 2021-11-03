@@ -1,8 +1,13 @@
 import random
 from math import nan
+
+import numpy as np
+
 from individual import Individual
 
+
 def crossover_order(p1, p2):
+
     zero_shift = min(p1)
     length = len(p1)
     start, end = sorted([random.randrange(length) for _ in range(2)])
@@ -31,7 +36,8 @@ def crossover_order(p1, p2):
     return [[x + zero_shift for x in c1], [x + zero_shift for x in c2]]
 
 
+def crossover(ind1, ind2, rectangles, fitness_function):
 
-def crossover(ind1,ind2,rectangles,fitness_fuction):
     offspring_genes = crossover_order(ind1.get_gene_list(),ind2.get_gene_list())
-    return [Individual(offspring_genes[0], rectangles, fitness_fuction), Individual(offspring_genes[1], rectangles, fitness_fuction )]
+    return [Individual(np.array(offspring_genes[0]), rectangles, fitness_function),
+            Individual(np.array(offspring_genes[1]), rectangles, fitness_function)]

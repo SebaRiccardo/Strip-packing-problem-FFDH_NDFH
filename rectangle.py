@@ -3,26 +3,25 @@ import numpy as np
 
 class Rectangle:
 
+
     def __init__(self,width,height,number):
         self.width = width
         self.height = height
-        self.number =number
+        self.number = number
 
     def __str__(self):
         return "Rectangle: number= %s width= %s height= %s" % (self.number,self.width,self.height)
 
-    def get_width(self):
-       return self.width
+    def get_width(self): return self.width
 
-    def get_height(self):
-       return self.height
+    def get_height(self): return self.height
 
-    def get_number(self):
-        return self.number
+    def get_number(self): return self.number
 
-## Creates rectangles of width (10,50) and height (10,75)
+
+# Creates rectangles of width (10,50) and height (10,75)
 def generate_rectangles(number_of_rectangles):
-        #solo usarlo cuando se quiere hacer debug
-        # o cuando se quiere usar siempre los mismos rectangulos
-        np.random.seed(1)
+
+        #Use seed only for debug
+        # np.random.seed(1)
         return [Rectangle(np.random.randint(10,51),np.random.randint(10,76),i) for i in range(number_of_rectangles)]

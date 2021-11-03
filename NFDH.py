@@ -10,16 +10,15 @@ from fitness import calculate_fitness_NFDH
 from utils import generate_stack_of_strips_NFDH, get_best_individual, get_average_fitness
 from plotting import plot_result, plot_rectangles
 
-from GLOBAL_PARAMETES import W,POPULATION_SIZE, MAX_GENERATIONS, MUTATION_PROBABILITY, \
-    CROSS_OVER_PROBABILITY, FOLDER_NFDH,TOURNAMENT_SIZE
+from global_variables import W, POPULATION_SIZE, MAX_GENERATIONS, MUTATION_PROBABILITY, \
+    CROSS_OVER_PROBABILITY, FOLDER_NFDH, TOURNAMENT_SIZE
 
 
-def main(number_of_rectangles,genes):
+def main(number_of_rectangles, genes):
     solutions = []
     best_ones = []
     best_fitness_acc = []
     average_fitness_acc = []
-
 
     # Generate reference rectangle list
     rectangles = generate_rectangles(number_of_rectangles)
@@ -27,8 +26,7 @@ def main(number_of_rectangles,genes):
     # Start inicial population
     population = create_starting_population_NFDH(POPULATION_SIZE, rectangles, genes)
 
-
-    #calculaes the best and average for que starting population
+    # Calculates the best and average for que starting population
     best_initial_individual = get_best_individual(population)
     average_fitness = get_average_fitness(population)
 
@@ -37,14 +35,15 @@ def main(number_of_rectangles,genes):
     print("Initial population Average fitness: ", average_fitness)
     print("-----------------------------------------------------")
 
-
-    stack = generate_stack_of_strips_NFDH(best_initial_individual.get_gene_list(), rectangles,W)
+    stack = generate_stack_of_strips_NFDH(best_initial_individual.get_gene_list(), rectangles, W)
 
     plot_rectangles(rectangles, stack, best_initial_individual, "initial", W, FOLDER_NFDH)
 
     for generation_number in range(MAX_GENERATIONS):
+
         # SELECTION
         selected = select_tournament(population, TOURNAMENT_SIZE)
+
         # CROSSOVER
         crossed_offspring = []
 
@@ -66,12 +65,12 @@ def main(number_of_rectangles,genes):
 
         population = mutated
 
-        # Mejor individuo de la generacion actual
+        # Best individual for the current generation
         best_one = get_best_individual(population)
         average_fitness = get_average_fitness(population)
 
         # Add a new configuration to the solutions list ej: [[2,1][5,3][4]]
-        solution = generate_stack_of_strips_NFDH(best_one.get_gene_list(), rectangles,W)
+        solution = generate_stack_of_strips_NFDH(best_one.get_gene_list(), rectangles, W)
         solutions.append(solution)
 
         # best solution in the whole generation
@@ -81,13 +80,14 @@ def main(number_of_rectangles,genes):
         
         print("Generation: ", (generation_number + 1))
         print("Best individual: ", best_one.get_gene_list())
-        print("Fitness: ",best_one.fitness)
-        print("Solution: ",solution)
+        print("Fitness: ", best_one.fitness)
+        print("Solution: ", solution)
 
-    plot_result(average_fitness_acc, MAX_GENERATIONS, FOLDER_NFDH, "average_fit")
-    plot_result(best_fitness_acc, MAX_GENERATIONS, FOLDER_NFDH, "best_fit")
+    plot_result(average_fitness_acc, MAX_GENERATIONS, FOLDER_NFDH, "Average_fit")
+    plot_result(best_fitness_acc, MAX_GENERATIONS, FOLDER_NFDH, "Best_fit")
 
-    if (MAX_GENERATIONS <= 1000):
+    if MAX_GENERATIONS <= 1000:
+
         i = 0
         for stack in solutions:
             plot_rectangles(rectangles, stack, best_ones[i], i+1, W, FOLDER_NFDH)
@@ -95,4 +95,4 @@ def main(number_of_rectangles,genes):
 
 
 if __name__ == '__main__':
-    main(10,np.arange(10))
+    main(10, np.arange(10))
