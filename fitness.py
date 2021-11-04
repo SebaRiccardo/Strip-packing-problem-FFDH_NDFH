@@ -2,7 +2,8 @@ import numpy as np
 from utils import strip_width
 
 #Calculates fitness base on FFDH
-def calculate_fitness_FFDH(gene_list, rectangles,max_strip_width):
+def calculate_fitness_FFDH(gene_list, rectangles, max_strip_width):
+
     stack_of_strips = []
     list_of_heights = []
     spaces_left = []
@@ -13,15 +14,17 @@ def calculate_fitness_FFDH(gene_list, rectangles,max_strip_width):
             # indice que indica a que strip pertenece el valor de space left
             indexOfStrip = stack_of_strips.index(s)
             # calcula cuando espacio disponible queda por aca uno de los strips
-            space_left_in_the_strip = strip_width(s, rectangles,max_strip_width)
+            space_left_in_the_strip = strip_width(s, rectangles, max_strip_width)
             # si el arreglo spaces_left tiene tantos elementos como el index lo marca entonces
-            # se guarda el valor en la posicion de index, en caso contrario quiere decir que debo crar un espacio nuevo con el append sino tira error index out of bounds
+            # se guarda el valor en la posicion de index, en caso contrario
+            # quiere decir que debo crar un espacio nuevo con el append sino tira error index out of bounds
             if len(spaces_left) > indexOfStrip:
                 spaces_left[indexOfStrip] = space_left_in_the_strip
             else:
                 spaces_left.append(space_left_in_the_strip)
 
-        # se fija si existen espacios vacios, en caso de no existir es porque no se agrego ningun rectangulo en ningun strip. inicio
+        # se fija si existen espacios vacios, en caso de no existir
+        # es porque no se agrego ningun rectangulo en ningun strip. inicio
         if len(spaces_left) != 0:
             index = 0
             added = False
@@ -52,8 +55,8 @@ def calculate_fitness_FFDH(gene_list, rectangles,max_strip_width):
         sum_of_max_heights = sum_of_max_heights + max(heights)
     return sum_of_max_heights
 
-#Calculates fitness baseD on NFDH
-def calculate_fitness_NFDH(gene_list, rectangles,max_strip_width):
+# Calculates fitness baseD on
+def calculate_fitness_NFDH(gene_list, rectangles, max_strip_width):
 
         list_of_strips = []
         strip = np.array([])

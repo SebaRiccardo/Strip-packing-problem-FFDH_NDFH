@@ -1,10 +1,11 @@
 
 from individual import Individual
+from global_variables import SEED
 import numpy as np
 
 
 def mutate(ind, rectangles, rectangles_number, fitness_function):
-
+    #np.random.seed(SEED)
     genes = ind.get_gene_list()
     indexA = 0
     indexB = 0
@@ -16,4 +17,4 @@ def mutate(ind, rectangles, rectangles_number, fitness_function):
     geneA = genes[indexA]
     genes[indexA] = genes[indexB]
     genes[indexB] = geneA
-    return Individual(np.array(genes), rectangles, fitness_function)
+    return Individual(genes, rectangles, fitness_function)

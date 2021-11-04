@@ -1,13 +1,13 @@
 import random
 from math import nan
-
+from global_variables import SEED
 import numpy as np
 
 from individual import Individual
 
 
 def crossover_order(p1, p2):
-
+    #random.seed(SEED)
     zero_shift = min(p1)
     length = len(p1)
     start, end = sorted([random.randrange(length) for _ in range(2)])
@@ -39,5 +39,5 @@ def crossover_order(p1, p2):
 def crossover(ind1, ind2, rectangles, fitness_function):
 
     offspring_genes = crossover_order(ind1.get_gene_list(),ind2.get_gene_list())
-    return [Individual(np.array(offspring_genes[0]), rectangles, fitness_function),
-            Individual(np.array(offspring_genes[1]), rectangles, fitness_function)]
+    return [Individual(offspring_genes[0], rectangles, fitness_function),
+            Individual(offspring_genes[1], rectangles, fitness_function)]

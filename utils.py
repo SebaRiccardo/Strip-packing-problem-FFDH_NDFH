@@ -8,13 +8,13 @@ def max_height(elements,rectangles):
         heigts.append(rectangles[i].height)
     return max(heigts)
 
+
 #fitness best and average
 def get_best_individual(population):
     return min(population, key = lambda ind: ind.fitness)
 
 def get_average_fitness(population):
     return sum([i.fitness for i in population]) / len(population)
-
 
 def strip_width(elements,rectangles,W):
     total =0
@@ -31,12 +31,13 @@ def generate_stack_of_strips_FFDH(gene_list, rectangles,max_strip_width):
     for i in gene_list:  # ej:[2,4,5,1,9,6,8,3,0,7]
         # itera casa strip en el stack al princiop pasa de largo
         for s in stack_of_strips:  # ej: [[2,3,9],[5,1,4],[9,8,0,7]]
-            # indice que indica a que strip pertenece el valor de space left
+            # indice que indica a que nivel de strip pertenece el valor de space left
             indexOfStrip = stack_of_strips.index(s)
             # calcula cuando espacio disponible queda por aca uno de los strips
             space_left_in_the_strip = strip_width(s, rectangles,max_strip_width)
             # si el arreglo spaces_left tiene tantos elementos como el index lo marca entonces
-            # se guarda el valor en la posicion de index, en caso contrario quiere decir que debo crar un espacio nuevo con el append sino tira error index out of bounds
+            # se guarda el valor en la posicion de index, en caso contrario quiere decir que
+            # debo crar un espacio nuevo con el append sino tira error index out of bounds
             if len(spaces_left) > indexOfStrip:
                 spaces_left[indexOfStrip] = space_left_in_the_strip
             else:
@@ -44,7 +45,7 @@ def generate_stack_of_strips_FFDH(gene_list, rectangles,max_strip_width):
 
         # se fija si existen espacios vacios, en caso de no existir es porque no se agrego ningun rectangulo en ningun strip. inicio
         if len(spaces_left) != 0:
-            index = 0
+            index = 0 #index of the current strip
             added = False
             # itera la lista de spaces_left para checkear si el rectangle[i] entra en algun
             # strip con espacio estante en el la posicion index

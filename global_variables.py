@@ -5,16 +5,14 @@
 # ej: num de rectangulos = 3 [1,2,3]  o [3,2,1] o [3,1,2]. Cualquiera sirve ya que despues np.permutation() permuta
 # y crea las distintas variantes de los genes
 
-# 10 rectangulos
-genes =[0,1,2,3,4,5,6,7,8,9]
-RECTANGLES_NUMBER =10
+RECTANGLES_NUMBER = 15
 
-FOLDER_FFDH = "FFDH_PLOTS"
-FOLDER_NFDH = "NFDH_PLOTS"
-
-TOURNAMENT_SIZE = 10
-POPULATION_SIZE = 50
-MAX_GENERATIONS = 5000
-MUTATION_PROBABILITY= .1
+FOLDER_FFDH = "FFDH"
+FOLDER_NFDH = "NFDH"
+SEED = "sese"
+TOURNAMENT_SIZE = 5
+POPULATION_SIZE = 10
+MAX_GENERATIONS = 50
+MUTATION_PROBABILITY = .1
 CROSS_OVER_PROBABILITY = .65
-W= 100
+W = 100
