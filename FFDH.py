@@ -53,7 +53,7 @@ def main(number_of_rectangles, genes):
         for ind1, ind2 in zip(selected[::2], selected[1::2]):
             #random.seed(1)
             if random.random() < CROSS_OVER_PROBABILITY:
-                children = crossover(ind1, ind2, rectangles, calculate_fitness_FFDH)
+                children = crossover(ind1.gene_list, ind2.gene_list, rectangles, calculate_fitness_FFDH)
                 crossed_offspring.append(children[0])
                 crossed_offspring.append(children[1])
             else:
@@ -64,7 +64,7 @@ def main(number_of_rectangles, genes):
         for ind in crossed_offspring:
             #random.seed(1)
             if random.random() < MUTATION_PROBABILITY:
-                mutated.append(mutate(ind, rectangles, number_of_rectangles, calculate_fitness_FFDH))
+                mutated.append(mutate(ind.gene_list, rectangles, number_of_rectangles, calculate_fitness_FFDH))
             else:
                 mutated.append(ind)
 

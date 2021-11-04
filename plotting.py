@@ -15,7 +15,7 @@ def plot_result(best_fitness,generation_number,folder,type):
     # save the figure
     dir = os.getcwd()
     plt.savefig(dir+"\%s\%s.png" % (folder,type), dpi=100, bbox_inches='tight')
-    #plt.show()
+    plt.show()
 
 def plot_rectangles(rectangles,stack,genes,fitness,generation_number,max_strip_width,folder):
     fig = plt.figure()
@@ -55,7 +55,7 @@ def plot_rectangles(rectangles,stack,genes,fitness,generation_number,max_strip_w
 
         Yaxis +=  max_height(strip,rectangles)
 
-    plt.xlabel("Generation: "+str(generation_number) +" Genes: "+ str(genes) +" Fitness: " +str(fitness) )
+    plt.xlabel("Generation: "+str(generation_number) +" Genes: "+ str(genes) +"\n Fitness: " +str(fitness) )
     plt.ylabel("Height")
 
     plt.axis([0,max_strip_width,0,Yaxis])
@@ -64,4 +64,5 @@ def plot_rectangles(rectangles,stack,genes,fitness,generation_number,max_strip_w
     dir = os.getcwd()
     # save the figure
     plt.savefig(dir+"\%s\generation%a.png" % (folder,generation_number), dpi=200, bbox_inches='tight')
-    plt.show()
+    plt.close(fig)
+    #plt.show()

@@ -36,8 +36,8 @@ def crossover_order(p1, p2):
     return [[x + zero_shift for x in c1], [x + zero_shift for x in c2]]
 
 
-def crossover(ind1, ind2, rectangles, fitness_function):
+def crossover(genes_ind1, genes_ind2, rectangles, fitness_function):
 
-    offspring_genes = crossover_order(ind1.get_gene_list(),ind2.get_gene_list())
+    offspring_genes = crossover_order(genes_ind1,genes_ind2)
     return [Individual(offspring_genes[0], rectangles, fitness_function),
             Individual(offspring_genes[1], rectangles, fitness_function)]

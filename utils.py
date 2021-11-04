@@ -1,6 +1,6 @@
 
 import numpy as np
-
+from global_variables import  W
 #Calculates the maximun height in a strip
 def max_height(elements,rectangles):
     heigts = []
@@ -97,3 +97,26 @@ def generate_stack_of_strips_NFDH(gene_list, rectangles,max_strip_width):
     list_of_strips.append(strip)
 
     return list_of_strips
+
+
+def calculate_best_individual_values_NFDH(population,rectangles):
+
+    # Best individual for the current generation
+    best_one = get_best_individual(population)
+    best_fitness = best_one.fitness
+    average_fitness = get_average_fitness(population)
+    stack_of_strips = generate_stack_of_strips_NFDH(best_one.get_gene_list(),rectangles,W)
+    best_genes = best_one.get_gene_list()
+
+    return best_genes,best_fitness,average_fitness,stack_of_strips,best_genes
+
+def calculate_best_individual_values_FFDH(population,rectangles):
+
+    # Best individual for the current generation
+    best_one = get_best_individual(population)
+    best_fitness = best_one.fitness
+    average_fitness = get_average_fitness(population)
+    stack_of_strips = generate_stack_of_strips_FFDH(best_one.get_gene_list(),rectangles,W)
+    best_genes = best_one.get_gene_list()
+
+    return best_genes,best_fitness,average_fitness,stack_of_strips,
