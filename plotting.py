@@ -63,5 +63,5 @@ def plot_rectangles(rectangles,stack,genes,fitness,generation_number,max_strip_w
     #plt.ylim([0, Yaxis])
     dir = os.getcwd()
     # save the figure
-    plt.savefig(dir+"\%s\generation%a.png" % (folder,generation_number), dpi=300, bbox_inches='tight')
+    plt.savefig(dir+"\%s\generation%a.png" % (folder,generation_number), dpi=200, bbox_inches='tight')
     plt.show()

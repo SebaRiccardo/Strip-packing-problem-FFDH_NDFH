@@ -43,7 +43,7 @@ def main(number_of_rectangles, genes):
     plot_rectangles(rectangles, stack, best_initial_individual.gene_list,best_initial_individual.fitness, "initial", W, FOLDER_FFDH)
 
     for generation_number in range(MAX_GENERATIONS):
-
+        
         # SELECTION
         selected = select_tournament(population, TOURNAMENT_SIZE)
 
@@ -86,8 +86,8 @@ def main(number_of_rectangles, genes):
         solutions.append(solution)
         solution = []
 
-    #plot_result(average_fitness_acc,MAX_GENERATIONS, FOLDER_FFDH, "Average fitness")
-    #plot_result(best_fitness_acc, MAX_GENERATIONS, FOLDER_FFDH, "Best fitness")
+    plot_result(average_fitness_acc, MAX_GENERATIONS, FOLDER_FFDH, "Average fitness")
+    plot_result(best_fitness_acc, MAX_GENERATIONS, FOLDER_FFDH, "Best fitness")
 
     for j in range(MAX_GENERATIONS):
         print(" -- ")
@@ -97,9 +97,9 @@ def main(number_of_rectangles, genes):
         print("Fitness: ",best_fitness_acc[j])
 
     #Print and save the plots
-    if MAX_GENERATIONS <= 1000:
-        for c in range(MAX_GENERATIONS):
-            plot_rectangles(rectangles, solutions[c], best_individuals[c],best_fitness_acc[c], c , W, FOLDER_FFDH)
+    #if MAX_GENERATIONS <= 1000:
+    for c in range(MAX_GENERATIONS):
+        plot_rectangles(rectangles, solutions[c], best_individuals[c],best_fitness_acc[c], c , W, FOLDER_FFDH)
 
 
 if __name__ == '__main__':

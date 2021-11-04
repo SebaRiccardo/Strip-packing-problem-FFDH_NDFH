@@ -97,9 +97,9 @@ def main(number_of_rectangles, genes):
         print("Fitness: ", best_fitness_acc[j])
 
     # Print and save the plots
-    if MAX_GENERATIONS <= 1000:
-        for c in range(MAX_GENERATIONS):
-            plot_rectangles(rectangles, solutions[c], best_individuals[c], best_fitness_acc[c], c, W, FOLDER_NFDH)
+    #if MAX_GENERATIONS <= 1000:
+    for c in range(MAX_GENERATIONS):
+        plot_rectangles(rectangles, solutions[c], best_individuals[c], best_fitness_acc[c], c, W, FOLDER_NFDH)
 
 if __name__ == '__main__':
     main(RECTANGLES_NUMBER, np.arange(RECTANGLES_NUMBER))
