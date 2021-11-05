@@ -18,7 +18,9 @@ def plot_result(best_fitness,generation_number,folder,type):
     plt.show()
 
 def plot_rectangles(rectangles,stack,genes,fitness,generation_number,max_strip_width,folder):
+    # plt.figure(figsize=(40,30))
     fig = plt.figure()
+
     fig.suptitle(folder[0:4])
     ax = fig.add_subplot()
     figures =[]

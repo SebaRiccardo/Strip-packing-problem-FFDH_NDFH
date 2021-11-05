@@ -1,6 +1,6 @@
 import random
 import numpy as np
-
+from global_variables import SEED
 class Rectangle:
 
 
@@ -24,7 +24,7 @@ def generate_rectangles(number_of_rectangles):
 
 
         #Use seed only for debug
-        np.random.seed(100)
+        #np.random.seed(SEED)
 
         return [Rectangle(np.random.randint(10,51),np.random.randint(10,76),i) for i in range(number_of_rectangles)]
 
